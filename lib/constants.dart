@@ -6,8 +6,9 @@ const kInactiveCardColor = Color(0xFF999999);
 const kBottomContainerColor = Color(0xFFEB1555);
 
 const kLabelTextStyle = TextStyle(
-  fontSize: 18.0,
   color: Color(0xFF8D8e98),
+  fontSize: 25.0,
+  fontWeight: FontWeight.w900,
 );
 
 const kBigNumber = TextStyle(
@@ -16,3 +17,7 @@ const kBigNumber = TextStyle(
 );
 
 var kHeight = 120;
+
+var kWeight = 0;
+
+var kAge = 1;

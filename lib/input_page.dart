@@ -3,6 +3,7 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'reusable_card.dart';
 import 'gender_card.dart';
 import 'constants.dart';
+import 'counter_card.dart';
 
 enum Gender {
   male,
@@ -84,17 +85,29 @@ class _InputPageState extends State<InputPage> {
                         Text("cm", style: kLabelTextStyle),
                       ],
                     ),
-                    Slider(
-                      value: kHeight.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: Colors.white,
-                      inactiveColor: Colors.orange,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          kHeight = newValue.round();
-                        });
-                      },
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: Color(0xFFBDBE98),
+                        activeTrackColor: Colors.white,
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Colors.blue,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 20),
+                      ),
+                      child: Slider(
+                        value: kHeight.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        // activeColor: Colors.red,
+                        inactiveColor: Color(0xFF8D8E98),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            kHeight = newValue.round();
+                          });
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -103,10 +116,40 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(children: <Widget>[
                 Expanded(
-                  child: ReusableCard(color: kCardColor),
+                  child: CounterCardTwoButtons(
+                    text: "WEIGHT",
+                    textVariable: kWeight.toString(),
+                    onPressed1: () {
+                      setState(() {
+                        kWeight--;
+                      });
+                    },
+                    icon1: Icon(FontAwesomeIcons.minus),
+                    onPressed2: () {
+                      setState(() {
+                        kWeight++;
+                      });
+                    },
+                    icon2: Icon(FontAwesomeIcons.plus),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(color: kCardColor),
+                  child: CounterCardTwoButtons(
+                    text: "AGE",
+                    textVariable: kAge.toString(),
+                    onPressed1: () {
+                      setState(() {
+                        kAge--;
+                      });
+                    },
+                    icon1: Icon(FontAwesomeIcons.minus),
+                    onPressed2: () {
+                      setState(() {
+                        kAge++;
+                      });
+                    },
+                    icon2: Icon(FontAwesomeIcons.plus),
+                  ),
                 ),
               ]),
             ),
