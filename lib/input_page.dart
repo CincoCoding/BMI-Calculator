@@ -84,17 +84,29 @@ class _InputPageState extends State<InputPage> {
                         Text("cm", style: kLabelTextStyle),
                       ],
                     ),
-                    Slider(
-                      value: kHeight.toDouble(),
-                      min: 120.0,
-                      max: 220.0,
-                      activeColor: Colors.white,
-                      inactiveColor: Colors.orange,
-                      onChanged: (double newValue) {
-                        setState(() {
-                          kHeight = newValue.round();
-                        });
-                      },
+                    SliderTheme(
+                      data: SliderTheme.of(context).copyWith(
+                        inactiveTrackColor: Color(0xFFBDBE98),
+                        activeTrackColor: Colors.white,
+                        thumbColor: Color(0xFFEB1555),
+                        overlayColor: Colors.blue,
+                        thumbShape:
+                            RoundSliderThumbShape(enabledThumbRadius: 15),
+                        overlayShape:
+                            RoundSliderOverlayShape(overlayRadius: 20),
+                      ),
+                      child: Slider(
+                        value: kHeight.toDouble(),
+                        min: 120.0,
+                        max: 220.0,
+                        // activeColor: Colors.red,
+                        inactiveColor: Color(0xFF8D8E98),
+                        onChanged: (double newValue) {
+                          setState(() {
+                            kHeight = newValue.round();
+                          });
+                        },
+                      ),
                     )
                   ],
                 ),
@@ -103,14 +115,71 @@ class _InputPageState extends State<InputPage> {
             Expanded(
               child: Row(children: <Widget>[
                 Expanded(
-                  child: ReusableCard(color: kCardColor),
+                  child: ReusableCard(
+                    color: kCardColor,
+                    cardChild: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Text(
+                          "Weight",
+                          style: kLabelTextStyle,
+                        ),
+                        Text(
+                          kWeight.toString(),
+                          style: kBigNumber,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            FloatingActionButton(
+                              onPressed: () {
+                                setState(() {
+                                  kWeight--;
+                                });
+                              },
+                              child: Icon(FontAwesomeIcons.minus),
+                            ),
+                            FloatingActionButton(
+                              onPressed: () {
+                                setState(() {
+                                  kWeight++;
+                                });
+                              },
+                              child: Icon(FontAwesomeIcons.plus),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
-                  child: ReusableCard(color: kCardColor),
+                  child: ReusableCard(
+                    color: kCardColor,
+                  ),
                 ),
               ]),
             ),
           ]),
+    );
+  }
+}
+
+class RoundIconButton extends StatelessWidget {
+  var kWeight = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return RawMaterialButton(
+      onPressed: () {
+        kWeight++;
+      },
+      shape: CircleBorder(),
+      fillColor: Colors.white,
+      constraints: const BoxConstraints.tightFor(
+        width: 56.0,
+        height: 56.0,
+      ),
     );
   }
 }
