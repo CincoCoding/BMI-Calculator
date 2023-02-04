@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 import 'reusable_card.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -44,7 +44,7 @@ class CounterCardTwoButtons extends StatelessWidget {
   });
 
   final String text;
-  var textVariable;
+  final textVariable;
   final Function onPressed1;
   final Icon icon1;
   final Function onPressed2;

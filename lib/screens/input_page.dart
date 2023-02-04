@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'reusable_card.dart';
-import 'gender_card.dart';
-import 'constants.dart';
-import 'counter_card.dart';
+import '../components/reusable_card.dart';
+import '../components/gender_card.dart';
+import '../constants.dart';
+import '../components/counter_card.dart';
+import '../components/BottomButton.dart';
 
 enum Gender {
   male,
@@ -163,17 +164,7 @@ class _InputPageState extends State<InputPage> {
               onTap: () {
                 Navigator.pushNamed((context), '/results');
               },
-              child: Container(
-                child: Center(
-                  child: Text(
-                    "CALCUATE",
-                    style: kLabelTextStyle.copyWith(
-                        color: Colors.white, fontSize: 50),
-                  ),
-                ),
-                color: Color(0xFFEB1555),
-                padding: EdgeInsets.only(bottom: 10.0),
-              ),
+              child: BottomButton(title: "CALCULATE"),
             )
           ]),
     );
