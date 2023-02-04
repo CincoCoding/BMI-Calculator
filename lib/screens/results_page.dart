@@ -4,6 +4,12 @@ import '../constants.dart';
 import '../components/BottomButton.dart';
 
 class ResultsPage extends StatelessWidget {
+  ResultsPage({this.bmiResult, this.resultText, this.interpretation});
+
+  final String bmiResult;
+  final String resultText;
+  final String interpretation;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,20 +37,20 @@ class ResultsPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(
-                      "Overweight :(",
+                      resultText,
                       style: kLabelTextStyle.copyWith(
                         color: Colors.green,
                         fontSize: 35,
                       ),
                     ),
                     Text(
-                      "35.0",
+                      bmiResult,
                       style: kBigNumber.copyWith(
                         fontSize: 100,
                       ),
                     ),
                     Text(
-                      "you're too damn wide.",
+                      interpretation,
                       style: kLabelTextStyle.copyWith(
                           color: Colors.white,
                           fontWeight: FontWeight.normal,

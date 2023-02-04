@@ -1,3 +1,5 @@
+import 'package:bmi_calculator/screens/CalculatorBrain.dart';
+import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/reusable_card.dart';
@@ -18,6 +20,9 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   Gender selectedGender;
+  int kAge = 27;
+  int weight = 95;
+  int height = 178;
 
   @override
   Widget build(BuildContext context) {
@@ -84,7 +89,7 @@ class _InputPageState extends State<InputPage> {
                       textBaseline: TextBaseline.alphabetic,
                       children: [
                         Text(
-                          kHeight.toString(),
+                          height.toString(),
                           style: kBigNumber,
                         ),
                         Text("cm", style: kLabelTextStyle),
@@ -102,14 +107,14 @@ class _InputPageState extends State<InputPage> {
                             RoundSliderOverlayShape(overlayRadius: 20),
                       ),
                       child: Slider(
-                        value: kHeight.toDouble(),
+                        value: height.toDouble(),
                         min: 120.0,
                         max: 220.0,
                         // activeColor: Colors.red,
                         inactiveColor: Color(0xFF8D8E98),
                         onChanged: (double newValue) {
                           setState(() {
-                            kHeight = newValue.round();
+                            height = newValue.round();
                           });
                         },
                       ),
@@ -124,16 +129,16 @@ class _InputPageState extends State<InputPage> {
                   Expanded(
                     child: CounterCardTwoButtons(
                       text: "WEIGHT",
-                      textVariable: kWeight.toString(),
+                      textVariable: weight.toString(),
                       onPressed1: () {
                         setState(() {
-                          kWeight--;
+                          weight--;
                         });
                       },
                       icon1: Icon(FontAwesomeIcons.minus),
                       onPressed2: () {
                         setState(() {
-                          kWeight++;
+                          weight++;
                         });
                       },
                       icon2: Icon(FontAwesomeIcons.plus),
@@ -162,7 +167,18 @@ class _InputPageState extends State<InputPage> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushNamed((context), '/results');
+                CalculatorBrain calc =
+                    CalculatorBrain(height: height, weight: weight);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsPage(
+                      bmiResult: calc.calculateBMI(),
+                      resultText: calc.getResult(),
+                      interpretation: calc.getInterpretation(),
+                    ),
+                  ),
+                );
               },
               child: BottomButton(title: "CALCULATE"),
             )
