@@ -21,3 +21,5 @@ var kHeight = 120;
 var kWeight = 0;
 
 var kAge = 1;
+
+const double kSizedBoxHeight = 54;

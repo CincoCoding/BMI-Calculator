@@ -165,12 +165,14 @@ class _InputPageState extends State<InputPage> {
               },
               child: Container(
                 child: Center(
-                    child: Text(
-                  "CALCUATE",
-                  style: kLabelTextStyle.copyWith(
-                      color: Colors.white, fontSize: 50),
-                )),
+                  child: Text(
+                    "CALCUATE",
+                    style: kLabelTextStyle.copyWith(
+                        color: Colors.white, fontSize: 50),
+                  ),
+                ),
                 color: Color(0xFFEB1555),
+                padding: EdgeInsets.only(bottom: 10.0),
               ),
             )
           ]),
