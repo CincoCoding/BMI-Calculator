@@ -7,13 +7,15 @@ const kBottomContainerColor = Color(0xFFEB1555);
 
 const kLabelTextStyle = TextStyle(
   color: Color(0xFF8D8e98),
-  fontSize: 25.0,
+  fontSize: 30.0,
   fontWeight: FontWeight.w900,
 );
 
 const kBigNumber = TextStyle(
-  fontSize: 50.0,
+  fontSize: 40.0,
   fontWeight: FontWeight.w900,
 );
 
 const double kSizedBoxHeight = 54;
+
+const double kButtonWidth = 100;

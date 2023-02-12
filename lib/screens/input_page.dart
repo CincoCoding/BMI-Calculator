@@ -1,12 +1,12 @@
-import 'package:bmi_calculator/screens/CalculatorBrain.dart';
+import 'package:bmi_calculator/screens/calculator_brain.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/reusable_card.dart';
-import '../components/gender_card.dart';
+import '../components/heavenly_body_card.dart';
 import '../constants.dart';
-import '../components/counter_card.dart';
-import '../components/BottomButton.dart';
+import '../components/counter_card_two_buttons.dart';
+import '../components/bottom_button.dart';
 
 enum CelestialObject {
   sun,
@@ -21,6 +21,17 @@ enum CelestialObject {
   neptune,
   blackHole
 }
+
+Map<CelestialObject, double> gravityFactor = {
+  CelestialObject.sun: 274 / earthsGravity,
+  CelestialObject.mercury: 3.7 / earthsGravity,
+  CelestialObject.venus: 8.87 / earthsGravity,
+  CelestialObject.earth: earthsGravity / earthsGravity,
+  CelestialObject.moon: 1.62 / earthsGravity,
+  CelestialObject.mars: 3.71 / earthsGravity,
+  CelestialObject.jupiter: 24.92 / earthsGravity,
+  CelestialObject.saturn: 10.44 / earthsGravity,
+};
 
 class InputPage extends StatefulWidget {
   @override
@@ -53,40 +64,52 @@ class _InputPageState extends State<InputPage> {
           ),
           body: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                Expanded(
-                  child: CounterCardTwoButtons(
-                    text: "WEIGHT",
-                    textVariable: weight.toString(),
-                    onPressed1: () {
-                      setState(() {
-                        weight--;
-                      });
-                    },
-                    onLongPress1: () {
-                      setState(() {
-                        weight = weight - 10;
-                      });
-                    },
-                    icon1: Icon(FontAwesomeIcons.minus),
-                    onPressed2: () {
-                      setState(() {
-                        weight++;
-                      });
-                    },
-                    onLongPress2: () {
-                      setState(() {
-                        weight = weight + 10;
-                      });
-                    },
-                    icon2: Icon(FontAwesomeIcons.plus),
-                  ),
+                CounterCardTwoButtons(
+                  text: "WEIGHT",
+                  textVariable: weight.toString(),
+                  onPressed1: () {
+                    setState(() {
+                      weight--;
+                    });
+                  },
+                  onLongPress1: () {
+                    setState(() {
+                      weight = weight - 10;
+                    });
+                  },
+                  icon1: Icon(FontAwesomeIcons.minus),
+                  onPressed2: () {
+                    setState(() {
+                      weight++;
+                    });
+                  },
+                  onLongPress2: () {
+                    setState(() {
+                      weight = weight + 10;
+                    });
+                  },
+                  icon2: Icon(FontAwesomeIcons.plus),
                 ),
-                Expanded(
-                    child: Row(
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
                     ReusableCard(
+                      width: kButtonWidth,
+                      onPress: () {
+                        setState(() {
+                          selectedCelestialObject = CelestialObject.sun;
+                        });
+                      },
+                      color: selectedCelestialObject == CelestialObject.sun
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: HeavenlyBodyCard(
+                          celestialObject: "SUN", image: "icons/sun.png"),
+                    ),
+                    ReusableCard(
+                      width: kButtonWidth,
                       onPress: () {
                         setState(() {
                           selectedCelestialObject = CelestialObject.mercury;
@@ -97,9 +120,10 @@ class _InputPageState extends State<InputPage> {
                           : kInactiveCardColor,
                       cardChild: HeavenlyBodyCard(
                           celestialObject: "MERCURY",
-                          image: "icons/icons8-planet-60.png"),
+                          image: "icons/mercury.png"),
                     ),
                     ReusableCard(
+                      width: kButtonWidth,
                       onPress: () {
                         setState(() {
                           selectedCelestialObject = CelestialObject.venus;
@@ -109,24 +133,73 @@ class _InputPageState extends State<InputPage> {
                           ? kActiveCardColor
                           : kInactiveCardColor,
                       cardChild: HeavenlyBodyCard(
-                          celestialObject: "VENUS",
-                          image: "icons/icons8-planet-60.png"),
+                          celestialObject: "VENUS", image: "icons/venus.png"),
                     ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     ReusableCard(
+                      width: kButtonWidth,
                       onPress: () {
                         setState(() {
-                          selectedCelestialObject = CelestialObject.earth;
+                          selectedCelestialObject = CelestialObject.mars;
                         });
                       },
-                      color: selectedCelestialObject == CelestialObject.earth
+                      color: selectedCelestialObject == CelestialObject.mars
                           ? kActiveCardColor
                           : kInactiveCardColor,
                       cardChild: HeavenlyBodyCard(
-                          celestialObject: "EARTH",
-                          image: "icons/icons8-earth-128(-xxxhdpi).png"),
+                          celestialObject: "MARS", image: "icons/mars.png"),
+                    ),
+                    ReusableCard(
+                      width: kButtonWidth,
+                      onPress: () {
+                        setState(() {
+                          selectedCelestialObject = CelestialObject.jupiter;
+                        });
+                      },
+                      color: selectedCelestialObject == CelestialObject.jupiter
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: HeavenlyBodyCard(
+                          celestialObject: "JUPITER",
+                          image: "icons/jupiter.png"),
+                    ),
+                    ReusableCard(
+                      width: kButtonWidth,
+                      onPress: () {
+                        setState(() {
+                          selectedCelestialObject = CelestialObject.saturn;
+                        });
+                      },
+                      color: selectedCelestialObject == CelestialObject.saturn
+                          ? kActiveCardColor
+                          : kInactiveCardColor,
+                      cardChild: HeavenlyBodyCard(
+                          celestialObject: "SATURN", image: "icons/saturn.png"),
                     ),
                   ],
-                ))
+                ),
+                GestureDetector(
+                  onTap: () {
+                    CalculatorBrain calc = CalculatorBrain(
+                        weight: weight.toDouble(),
+                        gravityFactor: gravityFactor[selectedCelestialObject]);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => ResultsPage(
+                          bmiResult: calc.calculateBMI(),
+                          resultText: calc.getResult(),
+                          interpretation: calc.getInterpretation(),
+                        ),
+                      ),
+                    );
+                  },
+                  child: BottomButton(title: "CALCULATE"),
+                )
               ]),
         ),
       ],

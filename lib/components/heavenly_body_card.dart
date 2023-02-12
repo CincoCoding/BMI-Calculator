@@ -9,15 +9,17 @@ class HeavenlyBodyCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Image.asset(image),
+        Image.asset(image, width: 100),
         SizedBox(
-          height: 15.0,
+          height: 5.0,
         ),
         Text(
           celestialObject,
-          style: kLabelTextStyle,
+          style: kLabelTextStyle.copyWith(color: Colors.black, fontSize: 20),
+          maxLines: 1,
+          overflow: TextOverflow.ellipsis,
         ),
       ],
     );

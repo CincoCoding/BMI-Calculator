@@ -62,7 +62,7 @@ class CounterCardTwoButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ReusableCard(
-      color: kCardColor,
+      color: Colors.black,
       cardChild: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[

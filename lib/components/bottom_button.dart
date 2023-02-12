@@ -46,7 +46,7 @@ class BottomButton extends StatelessWidget {
       child: Center(
         child: Text(
           title,
-          style: kLabelTextStyle.copyWith(color: Colors.white, fontSize: 50),
+          style: kBigNumber,
         ),
       ),
       // color: Color(0xFFEB1555),
