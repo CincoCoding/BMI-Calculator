@@ -30,8 +30,7 @@ class InputPage extends StatefulWidget {
 class _InputPageState extends State<InputPage> {
   CelestialObject selectedCelestialObject;
   int kAge = 27;
-  int weight = 95;
-  int height = 178;
+  int weight = 180;
 
   @override
   Widget build(BuildContext context) {
@@ -56,6 +55,34 @@ class _InputPageState extends State<InputPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
+                Expanded(
+                  child: CounterCardTwoButtons(
+                    text: "WEIGHT",
+                    textVariable: weight.toString(),
+                    onPressed1: () {
+                      setState(() {
+                        weight--;
+                      });
+                    },
+                    onLongPress1: () {
+                      setState(() {
+                        weight = weight - 10;
+                      });
+                    },
+                    icon1: Icon(FontAwesomeIcons.minus),
+                    onPressed2: () {
+                      setState(() {
+                        weight++;
+                      });
+                    },
+                    onLongPress2: () {
+                      setState(() {
+                        weight = weight + 10;
+                      });
+                    },
+                    icon2: Icon(FontAwesomeIcons.plus),
+                  ),
+                ),
                 Expanded(
                     child: Row(
                   children: <Widget>[

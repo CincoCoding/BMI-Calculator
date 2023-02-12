@@ -8,16 +8,19 @@ class RoundIconButton extends StatelessWidget {
   RoundIconButton({
     @required this.icon,
     @required this.onPressed,
+    @required this.onLongPress,
   });
 
   final IconData icon;
   final Function onPressed;
+  final Function onLongPress;
 
   @override
   Widget build(BuildContext context) {
     return RawMaterialButton(
       elevation: 100.0,
       onPressed: onPressed,
+      onLongPress: onLongPress,
       shape: CircleBorder(),
       child: Icon(
         icon,
@@ -36,8 +39,10 @@ class RoundIconButton extends StatelessWidget {
 class CounterCardTwoButtons extends StatelessWidget {
   CounterCardTwoButtons({
     @required this.onPressed1,
+    @required this.onLongPress1,
     this.icon1,
     @required this.onPressed2,
+    @required this.onLongPress2,
     this.icon2,
     this.text,
     this.textVariable,
@@ -46,8 +51,12 @@ class CounterCardTwoButtons extends StatelessWidget {
   final String text;
   final textVariable;
   final Function onPressed1;
+  final Function onLongPress1;
+
   final Icon icon1;
   final Function onPressed2;
+  final Function onLongPress2;
+
   final Icon icon2;
 
   @override
@@ -71,10 +80,12 @@ class CounterCardTwoButtons extends StatelessWidget {
               RoundIconButton(
                 icon: FontAwesomeIcons.minus,
                 onPressed: onPressed1,
+                onLongPress: onLongPress1,
               ),
               RoundIconButton(
                 icon: FontAwesomeIcons.plus,
                 onPressed: onPressed2,
+                onLongPress: onLongPress2,
               ),
             ],
           ),
