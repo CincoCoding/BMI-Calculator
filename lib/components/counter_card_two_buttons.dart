@@ -71,7 +71,7 @@ class CounterCardTwoButtons extends StatelessWidget {
             style: kLabelTextStyle,
           ),
           Text(
-            textVariable,
+            textVariable + "lb",
             style: kBigNumber,
           ),
           Row(

@@ -1,11 +1,11 @@
-import 'package:bmi_calculator/screens/calculator_brain.dart';
+import 'package:bmi_calculator/components/calculator_brain.dart';
+import 'package:bmi_calculator/components/counter_card_v2.dart';
 import 'package:bmi_calculator/screens/results_page.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import '../components/reusable_card.dart';
 import '../components/heavenly_body_card.dart';
 import '../constants.dart';
-import '../components/counter_card_two_buttons.dart';
 import '../components/bottom_button.dart';
 
 enum CelestialObject {
@@ -40,7 +40,6 @@ class InputPage extends StatefulWidget {
 
 class _InputPageState extends State<InputPage> {
   CelestialObject selectedCelestialObject;
-  int kAge = 27;
   int weight = 180;
 
   @override
@@ -66,7 +65,7 @@ class _InputPageState extends State<InputPage> {
               crossAxisAlignment: CrossAxisAlignment.stretch,
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
-                CounterCardTwoButtons(
+                CounterCardTwoButtonsV2(
                   text: "WEIGHT",
                   textVariable: weight.toString(),
                   onPressed1: () {
@@ -91,6 +90,7 @@ class _InputPageState extends State<InputPage> {
                     });
                   },
                   icon2: Icon(FontAwesomeIcons.plus),
+                  image: "images/blackSpace.png",
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
