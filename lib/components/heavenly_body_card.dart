@@ -15,11 +15,14 @@ class HeavenlyBodyCard extends StatelessWidget {
         SizedBox(
           height: 5.0,
         ),
-        Text(
-          celestialObject,
-          style: kLabelTextStyle.copyWith(color: Colors.black, fontSize: 20),
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            celestialObject,
+            style: kLabelTextStyle.copyWith(color: Colors.black, fontSize: 20),
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
         ),
       ],
     );
