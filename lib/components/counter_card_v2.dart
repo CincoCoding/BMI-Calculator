@@ -64,7 +64,7 @@ class CounterCardTwoButtonsV2 extends StatelessWidget {
   final Icon icon2;
 
   final String image;
-  double width;
+  final double width;
   final Widget cardChild;
   final Function onPress;
   final Function onLongPress;

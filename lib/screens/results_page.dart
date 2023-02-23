@@ -19,7 +19,7 @@ class ResultsPage extends StatelessWidget {
   final String interpretation;
 
   final Color color;
-  double width;
+  final double width;
   final Widget cardChild;
   final Function onPress;
   final Function onLongPress;

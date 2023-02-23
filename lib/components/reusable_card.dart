@@ -10,7 +10,7 @@ class ReusableCard extends StatelessWidget {
   });
 
   final Color color;
-  double width;
+  final double width;
   final Widget cardChild;
   final Function onPress;
   final Function onLongPress;

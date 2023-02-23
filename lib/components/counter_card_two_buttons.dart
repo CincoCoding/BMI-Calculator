@@ -61,6 +61,7 @@ class CounterCardTwoButtons extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // ignore: missing_required_param
     return ReusableCard(
       cardChild: Column(
         mainAxisAlignment: MainAxisAlignment.center,
