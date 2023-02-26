@@ -20,7 +20,9 @@ enum CelestialObject {
   saturn,
   uranus,
   neptune,
-  blackHole
+  internationalSpaceStation,
+  blackHole,
+  ufo,
 }
 
 Map<CelestialObject, double> gravityFactor = {
@@ -32,6 +34,11 @@ Map<CelestialObject, double> gravityFactor = {
   CelestialObject.mars: 3.71 / earthsGravity,
   CelestialObject.jupiter: 24.92 / earthsGravity,
   CelestialObject.saturn: 10.44 / earthsGravity,
+  CelestialObject.neptune: 1 / earthsGravity,
+  CelestialObject.uranus: 1 / earthsGravity,
+  CelestialObject.internationalSpaceStation: 0.00,
+  CelestialObject.blackHole: double.infinity,
+  CelestialObject.ufo: 0.00,
 };
 
 class InputPage extends StatefulWidget {
@@ -122,7 +129,7 @@ class _InputPageState extends State<InputPage> {
                       celestialObjectName: "MOON",
                     ),
                     buildCelestialCard(
-                      celestialObject: CelestialObject.sun,
+                      celestialObject: CelestialObject.mars,
                       celestialObjectImage: "icons/mars.png",
                       celestialObjectName: "MARS",
                     ),
@@ -130,6 +137,48 @@ class _InputPageState extends State<InputPage> {
                       celestialObject: CelestialObject.jupiter,
                       celestialObjectImage: "icons/jupiter.png",
                       celestialObjectName: "JUPITER",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.saturn,
+                      celestialObjectImage: "icons/saturn.png",
+                      celestialObjectName: "SATURN",
+                    ),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.neptune,
+                      celestialObjectImage: "icons/neptune.png",
+                      celestialObjectName: "NEPTUNE",
+                    ),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.uranus,
+                      celestialObjectImage: "icons/uranus.png",
+                      celestialObjectName: "URANUS",
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    buildCelestialCard(
+                      celestialObject:
+                          CelestialObject.internationalSpaceStation,
+                      celestialObjectImage:
+                          "icons/internationalSpaceStation.png",
+                      celestialObjectName: "ISS",
+                    ),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.blackHole,
+                      celestialObjectImage: "icons/blackHole.png",
+                      celestialObjectName: "BLACK HOLE",
+                    ),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.ufo,
+                      celestialObjectImage: "icons/ufo.png",
+                      celestialObjectName: "UFO",
                     ),
                   ],
                 ),

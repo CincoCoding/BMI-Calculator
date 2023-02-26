@@ -11,7 +11,9 @@ enum CelestialObject {
   saturn,
   uranus,
   neptune,
-  blackHole
+  internationalSpaceStation,
+  blackHole,
+  ufo,
 }
 
 double earthsGravity = 9.798;
@@ -25,6 +27,11 @@ Map<CelestialObject, double> gravityFactor = {
   CelestialObject.mars: 3.71 / earthsGravity,
   CelestialObject.jupiter: 24.92 / earthsGravity,
   CelestialObject.saturn: 10.44 / earthsGravity,
+  CelestialObject.neptune: 11.15 / earthsGravity,
+  CelestialObject.uranus: 8.87 / earthsGravity,
+  CelestialObject.internationalSpaceStation: 0.00 / earthsGravity,
+  CelestialObject.blackHole: double.infinity / earthsGravity,
+  CelestialObject.ufo: 0.00 / earthsGravity,
 };
 
 class CelestialObjectData {

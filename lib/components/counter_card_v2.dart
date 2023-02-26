@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import '../constants.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -24,12 +26,12 @@ class RoundIconButton extends StatelessWidget {
       child: Icon(
         icon,
         color: Colors.white,
-        size: 35.0,
+        size: 30.0,
       ),
       fillColor: Colors.blue,
       constraints: const BoxConstraints.tightFor(
-        width: 56.0,
-        height: 56.0,
+        width: 42.0,
+        height: 42.0,
       ),
     );
   }
@@ -81,11 +83,11 @@ class CounterCardTwoButtonsV2 extends StatelessWidget {
             children: <Widget>[
               Text(
                 text,
-                style: kLabelTextStyle,
+                style: kLabelTextStyle.copyWith(fontSize: 20),
               ),
               Text(
                 textVariable + "lb",
-                style: kBigNumber,
+                style: kBigNumber.copyWith(fontSize: 30),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -104,8 +106,8 @@ class CounterCardTwoButtonsV2 extends StatelessWidget {
               ),
             ],
           ),
-          margin: EdgeInsets.all(15.0),
-          padding: EdgeInsets.all(20.0),
+          margin: EdgeInsets.all(5.0),
+          padding: EdgeInsets.all(15.0),
           decoration: ShapeDecoration(
             image: DecorationImage(
               image: AssetImage(image),

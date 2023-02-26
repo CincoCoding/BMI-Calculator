@@ -12,7 +12,7 @@ class HeavenlyBodyCard extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
-        Image.asset(heavenlyImage, width: 100),
+        Image.asset(heavenlyImage, width: 28),
         SizedBox(
           height: 5.0,
         ),
