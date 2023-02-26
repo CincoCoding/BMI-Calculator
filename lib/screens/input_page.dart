@@ -7,6 +7,7 @@ import '../components/reusable_card.dart';
 import '../components/heavenly_body_card.dart';
 import '../constants.dart';
 import '../components/bottom_button.dart';
+import '../components/celestial_body_data.dart';
 
 enum CelestialObject {
   sun,
@@ -95,19 +96,7 @@ class _InputPageState extends State<InputPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.sun;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.sun
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "SUN", image: "icons/sun.png"),
-                    ),
+                    buildReusableCard(),
                     ReusableCard(
                       width: kButtonWidth,
                       onPress: () {
@@ -204,6 +193,22 @@ class _InputPageState extends State<InputPage> {
               ]),
         ),
       ],
+    );
+  }
+
+  ReusableCard buildReusableCard() {
+    return ReusableCard(
+      width: kButtonWidth,
+      onPress: () {
+        setState(() {
+          selectedCelestialObject = CelestialObject.sun;
+        });
+      },
+      color: selectedCelestialObject == CelestialObject.sun
+          ? kActiveCardColor
+          : kInactiveCardColor,
+      cardChild:
+          HeavenlyBodyCard(celestialObject: "SUN", image: "icons/sun.png"),
     );
   }
 }

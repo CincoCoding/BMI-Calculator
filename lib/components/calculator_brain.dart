@@ -1,31 +1,5 @@
 import 'package:flutter/cupertino.dart';
-
-enum CelestialObject {
-  sun,
-  mercury,
-  venus,
-  earth,
-  moon,
-  mars,
-  jupiter,
-  saturn,
-  uranus,
-  neptune,
-  blackHole
-}
-
-double earthsGravity = 9.798;
-
-Map<CelestialObject, double> gravityFactor = {
-  CelestialObject.sun: 274 / earthsGravity,
-  CelestialObject.mercury: 3.7 / earthsGravity,
-  CelestialObject.venus: 8.87 / earthsGravity,
-  CelestialObject.earth: earthsGravity / earthsGravity,
-  CelestialObject.moon: 1.62 / earthsGravity,
-  CelestialObject.mars: 3.71 / earthsGravity,
-  CelestialObject.jupiter: 24.92 / earthsGravity,
-  CelestialObject.saturn: 10.44 / earthsGravity,
-};
+import 'celestial_body_data.dart';
 
 class CalculatorBrain {
   CalculatorBrain(
