@@ -96,78 +96,40 @@ class _InputPageState extends State<InputPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    buildReusableCard(),
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.mercury;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.mercury
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "MERCURY",
-                          image: "icons/mercury.png"),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.sun,
+                      celestialObjectImage: "icons/sun.png",
+                      celestialObjectName: "SUN",
                     ),
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.venus;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.venus
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "VENUS", image: "icons/venus.png"),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.mercury,
+                      celestialObjectImage: "icons/mercury.png",
+                      celestialObjectName: "MERCURY",
+                    ),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.earth,
+                      celestialObjectImage: "icons/earth.png",
+                      celestialObjectName: "EARTH",
                     ),
                   ],
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: <Widget>[
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.mars;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.mars
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "MARS", image: "icons/mars.png"),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.moon,
+                      celestialObjectImage: "icons/moon.png",
+                      celestialObjectName: "MOON",
                     ),
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.jupiter;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.jupiter
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "JUPITER",
-                          image: "icons/jupiter.png"),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.sun,
+                      celestialObjectImage: "icons/mars.png",
+                      celestialObjectName: "MARS",
                     ),
-                    ReusableCard(
-                      width: kButtonWidth,
-                      onPress: () {
-                        setState(() {
-                          selectedCelestialObject = CelestialObject.saturn;
-                        });
-                      },
-                      color: selectedCelestialObject == CelestialObject.saturn
-                          ? kActiveCardColor
-                          : kInactiveCardColor,
-                      cardChild: HeavenlyBodyCard(
-                          celestialObject: "SATURN", image: "icons/saturn.png"),
+                    buildCelestialCard(
+                      celestialObject: CelestialObject.jupiter,
+                      celestialObjectImage: "icons/jupiter.png",
+                      celestialObjectName: "JUPITER",
                     ),
                   ],
                 ),
@@ -196,19 +158,25 @@ class _InputPageState extends State<InputPage> {
     );
   }
 
-  ReusableCard buildReusableCard() {
+  ReusableCard buildCelestialCard(
+      {@required CelestialObject celestialObject,
+      @required String celestialObjectName,
+      @required String celestialObjectImage}) {
     return ReusableCard(
       width: kButtonWidth,
-      onPress: () {
-        setState(() {
-          selectedCelestialObject = CelestialObject.sun;
-        });
-      },
-      color: selectedCelestialObject == CelestialObject.sun
+      onPress: () => _selectCelestialObject(celestialObject),
+      color: selectedCelestialObject == celestialObject
           ? kActiveCardColor
           : kInactiveCardColor,
-      cardChild:
-          HeavenlyBodyCard(celestialObject: "SUN", image: "icons/sun.png"),
+      cardChild: HeavenlyBodyCard(
+          heavenlyTitle: celestialObjectName,
+          heavenlyImage: celestialObjectImage),
     );
+  }
+
+  void _selectCelestialObject(CelestialObject celestialObject) {
+    setState(() {
+      selectedCelestialObject = celestialObject;
+    });
   }
 }
